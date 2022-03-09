@@ -1,0 +1,42 @@
+# Obter a lista de animais - teste de GET
+GET http://localhost:3000/animais
+Content-Type: application/json
+###
+
+# Inserir novo animal
+POST http://localhost:3000/animais
+Content-Type: application/json
+
+{
+ "tipo": "gato",
+ "nome": "Ted",
+ "idade": 4
+}
+###
+
+# Alterar um animal
+PUT http://localhost:3000/animais
+Content-Type: application/json
+
+{
+ "_id": "6227e892243ed4f07d7ca0e8",
+ "tipo": "cachorro",
+ "nome": "Colmeia",
+ "idade": 1
+}
+###
+
+# Excluir um animal pelo id
+DELETE http://localhost:3000/animais/6227e892243ed4f07d7ca0e8
+Content-Type: application/json
+###
+
+# Obter animal pelo id
+GET http://localhost:3000/animais/6227e8d6243ed4f07d7ca0e9
+Content-Type: application/json
+###
+
+# Obter animais filtrando
+GET http://localhost:3000/animais/filtro/ga
+Content-Type: application/json
+###
