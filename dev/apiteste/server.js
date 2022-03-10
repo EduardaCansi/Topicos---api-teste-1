@@ -29,3 +29,7 @@ app.get('/', (req, res) => {
 // rotas para animais
 const animais = require('./animais');
 animais(app);
+
+// rotas para colaborador
+const colaborador = require('./colaborador');
+colaborador(app);
