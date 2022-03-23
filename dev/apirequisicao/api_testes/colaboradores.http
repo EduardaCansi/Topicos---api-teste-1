@@ -2,3 +2,70 @@
 GET http://localhost:3000/api/colaboradores
 Content-Type: application/json
 ###
+
+# Inserir novo colaborador
+POST http://localhost:3000/api/colaboradores
+Content-Type: application/json
+
+{
+ "nome": "Usuario teste", "email": "teste@upf.br",
+ "celular": "99999-9889", "senha": "1234",
+ "dataHoraCad": "2021-01-30T17:32:25.000Z"
+}
+###
+
+# Alterar colaborador
+PUT http://localhost:3000/api/colaboradores
+Content-Type: application/json
+
+{
+ "_id": "623a57b87e688588c0316e46",
+ "nome": "Eduarda alterado",
+ "email": "eduarda@teste.com",
+ "celular": "54 6543 2433"
+}
+###
+
+
+# Excluir um colaborador
+DELETE http://localhost:3000/api/colaboradores/623a57de7e688588c0316e49
+Content-Type: application/json
+###
+
+
+# Obter pelo id de colaborador
+GET http://localhost:3000/api/colaboradores/623a57b87e688588c0316e46
+Content-Type: application/json
+###
+
+
+# Obter colaborador filtrando
+GET http://localhost:3000/api/colaboradores/filtro/alterado
+Content-Type: application/json
+###
+
+# Colaborador sem nome requerido.
+POST http://localhost:3000/api/colaboradores
+Content-Type: application/json
+
+{
+ "nome": "",
+ "email": "jaqson@upf.br",
+ "celular": "99999-9999",
+ "senha": "123",
+ "dataHoraCad": "2021-01-25T17:32:25.000Z"
+}
+###
+
+# Colaborador com email duplicado.
+POST http://localhost:3000/api/colaboradores
+Content-Type: application/json
+
+{
+ "nome": "Jaqson",
+ "email": "eduarda@teste.com",
+ "celular": "99999-9999",
+ "senha": "123",
+ "dataHoraCad": "2021-01-25T17:32:25.000Z"
+}
+###
