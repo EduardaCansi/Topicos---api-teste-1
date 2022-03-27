@@ -1,0 +1,50 @@
+@apiUrl = http://localhost:3000/api
+
+# Obter a lista de andamento
+GET {{apiUrl}}/andamento
+Content-Type: application/json
+###
+
+# Inserir novo andamento
+POST {{apiUrl}}/andamento
+Content-Type: application/json
+
+{
+    "dataHoraTermino": "",
+    "titulo": "Andamento um",
+    "descricao": "teste andamento um",
+    "atividade": "62409781bbed95b9b7827047",
+    "colaborador": "623a57b87e688588c0316e46"
+}
+###
+
+# Alterar andamento
+PUT {{apiUrl}}/andamento
+Content-Type: application/json
+
+{
+    "_id": "62409781bbed95b9b7827047",
+    "dataHoraTermino": "",
+    "titulo": "Andamento um",
+    "descricao": "teste andamento um",
+    "atividade": "62409781bbed95b9b7827047",
+    "colaborador": "623a57b87e688588c0316e46"
+}
+###
+
+
+# Excluir um andamento
+DELETE {{apiUrl}}/andamento/62408fd4c2e847250c133686
+Content-Type: application/json
+###
+
+
+# Obter pelo id de andamento
+GET {{apiUrl}}/andamento/62409041c2e847250c133691
+Content-Type: application/json
+###
+
+# Obter andamento filtrando
+GET {{apiUrl}}/andamento/filtro/finalizada
+Content-Type: application/json
+###

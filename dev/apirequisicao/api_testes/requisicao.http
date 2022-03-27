@@ -1,0 +1,64 @@
+@apiUrl = http://localhost:3000/api
+
+# Obter a lista de requisicoes
+GET {{apiUrl}}/requisicao
+Content-Type: application/json
+###
+
+# Inserir novo requisicao
+POST {{apiUrl}}/requisicao
+Content-Type: application/json
+
+{
+    "titulo": "Projeto um",
+    "descricao": "aaa",
+    "dataHoraCriada": "2020-01-25T17:32:25.000Z",
+    "status": "Nova",
+    "prazoAtendimento": "2020-02-25T17:32:25.000Z",
+    "tipoRequisicao": "623a70733fa2de66138fd3d0",
+    "solicitante": {
+        "_id": "623a6af66779e0de8514e4a3",
+        "nome": "Solicitante alterado",
+        "email": "solicitante@teste.com",
+        "senha": "1234"
+    }
+}
+###
+
+# Alterar requisicao
+PUT {{apiUrl}}/requisicao
+Content-Type: application/json
+
+{
+    "_id": "62409041c2e847250c133691",
+    "titulo": "Projeto alterado",
+    "descricao": "aaa",
+    "dataHoraCriada": "2020-01-25T17:32:25.000Z",
+    "status": "Nova",
+    "prazoAtendimento": "2020-02-25T17:32:25.000Z",
+    "tipoRequisicao": "623a70733fa2de66138fd3d0",
+    "solicitante": {
+        "_id": "623a6af66779e0de8514e4a3",
+        "nome": "Solicitante alterado",
+        "email": "solicitante@teste.com",
+        "senha": "1234"
+    }
+}
+###
+
+
+# Excluir um requisicao
+DELETE {{apiUrl}}/requisicao/62408fd4c2e847250c133686
+Content-Type: application/json
+###
+
+
+# Obter pelo id de requisicao
+GET {{apiUrl}}/requisicao/62409041c2e847250c133691
+Content-Type: application/json
+###
+
+# Obter requisicao filtrando
+GET {{apiUrl}}/requisicao/filtro/alterado
+Content-Type: application/json
+###

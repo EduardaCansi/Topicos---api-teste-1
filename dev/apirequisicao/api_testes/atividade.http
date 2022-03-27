@@ -1,0 +1,56 @@
+@apiUrl = http://localhost:3000/api
+
+# Obter a lista de atividade
+GET {{apiUrl}}/atividade
+Content-Type: application/json
+###
+
+# Inserir novo atividade
+POST {{apiUrl}}/atividade
+Content-Type: application/json
+
+{
+    "titulo": "Atividade dois",
+    "descricao": "teste atividade um",
+    "status": "Andamento",
+    "prazo": "2020-01-25T17:32:25.000Z",
+    "agendaInicio": "2020-01-10T17:32:25.000Z",
+    "dataHoraTermino": "",
+    "requisicao": "62409041c2e847250c133691",
+    "colaborador": "623a57b87e688588c0316e46"
+}
+###
+
+# Alterar atividade
+PUT {{apiUrl}}/atividade
+Content-Type: application/json
+
+{
+    "_id": "62409781bbed95b9b7827047",
+    "titulo": "Atividade alterada",
+    "descricao": "teste atividade dois alterada",
+    "status": "finalizada",
+    "prazo": "2020-01-25T17:32:25.000Z",
+    "agendaInicio": "2020-01-10T17:32:25.000Z",
+    "dataHoraTermino": "",
+    "requisicao": "62409041c2e847250c133691",
+    "colaborador": "623a57b87e688588c0316e46"
+}
+###
+
+
+# Excluir um atividade
+DELETE {{apiUrl}}/atividade/62408fd4c2e847250c133686
+Content-Type: application/json
+###
+
+
+# Obter pelo id de atividade
+GET {{apiUrl}}/atividade/62409041c2e847250c133691
+Content-Type: application/json
+###
+
+# Obter atividade filtrando
+GET {{apiUrl}}/atividade/filtro/finalizada
+Content-Type: application/json
+###
