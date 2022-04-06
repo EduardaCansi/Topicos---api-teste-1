@@ -1,25 +1,32 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import ColaboradorList from './ColaboradorList';
 import ColaboradorForm from './ColaboradorForm';
+import { deletColaboradores, deleteColaboradores, getColaboradores, postColaboradores, putColaboradores } from './Api';
 
 function App() {
 
-  let colaboradorList = [
-    { id: 1, nome: 'Fulano', email: 'email1@teste', senha: '54 6565 5454' },
-    { id: 2, nome: 'Beltrano', email: 'email2@teste', senha: '54 6565 5454' },
-  ]
+  
 
-  const [colaboradores, setColaboradores] = useState(colaboradorList)
+  const [colaboradores, setColaboradores] = useState([])
+  useEffect(()=>{
+    atualizarLista();
+  }, [])
+
+  const atualizarLista = () => {
+    getColaboradores().then((resp)=>{
+      setColaboradores(resp);
+    })
+  }
 
   const editar = (id) => {
-    setColaborador(colaboradores.filter((colaborador) => colaborador.id == id)[0]);
+    setColaborador(colaboradores.filter((colaborador) => colaborador._id == id)[0]);
     setEditando(true);
   }
 
   const excluir = (id) => {
-    setColaboradores(colaboradores.filter((colaborador) => colaborador.id !== id));
+    deletColaboradores(id).then(()=> atualizarLista())
   }
 
   // operação inserir
@@ -33,11 +40,10 @@ function App() {
 
   const salvar = () => {
     console.log('Salvar ...');
-    if (colaborador.id == null) { // inclussão
-      colaborador.id = colaborador.length + 1
-      setColaboradores([...colaboradores, colaborador])
+    if (colaborador._id == null) { // inclussão
+      postColaboradores(colaborador).then(()=> atualizarLista());
     } else { // alteração
-      setColaboradores(colaboradores.map((find) => (find.id === colaborador.id ? colaborador : find)))
+      putColaboradores(colaborador).then(()=> atualizarLista());
     }
     setEditando(false);
   }
