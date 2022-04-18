@@ -30,5 +30,17 @@ class ColaboradorSrv {
       return response.data;
     } catch (error) {}
   }
+
+  async obterPeloId(id) {
+    return await api.get(this.url + "/" + id).catch((err) => {
+      throw err;
+    });
+  }
+
+  async filtrar(filtro) {
+    return await api.get(this.url + "filtro" + filtro).catch((err) => {
+      throw err;
+    });
+  }
 }
 export default new ColaboradorSrv();

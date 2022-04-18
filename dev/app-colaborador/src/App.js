@@ -9,6 +9,7 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { Toast } from "primereact/toast";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 function App() {
   const [colaboradores, setColaboradores] = useState([]);
@@ -21,22 +22,57 @@ function App() {
     ColaboradorSrv.getColaboradores()
       .then((resp) => {
         setColaboradores(resp);
-        console.log("Usuarios atualizados");
+        toastRef.current.show({
+          severity: "sucess",
+          summary: "Usuários atualizados",
+          life: 3000,
+        });
       })
       .catch((e) => {
-        console.log("Erro: " + e.message);
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 3000,
+        });
       });
   };
 
-  const editar = (id) => {
+  const editar = (_id) => {
     setColaborador(
-      colaboradores.filter((colaborador) => colaborador._id == id)[0]
+      colaboradores.filter((colaborador) => colaborador._id == _id)[0]
     );
     setEditando(true);
   };
 
-  const excluir = (id) => {
-    ColaboradorSrv.deletColaboradores(id).then(() => atualizarLista());
+  const excluirConfirm = (_id) => {
+    ColaboradorSrv.deletColaboradores(_id)
+      .then((resp) => {
+        atualizarLista();
+        toastRef.current.show({
+          severity: "success",
+          summary: "Excluído",
+          life: 2000,
+        });
+      })
+      .catch((e) => {
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 4000,
+        });
+      });
+  };
+
+  const excluir = (_id) => {
+    confirmDialog({
+      message: "Confirmar a exclusão?",
+      header: "Confirmação",
+      icon: "pi pi-,question",
+      acceptLabel: "Sim",
+      rejectLabel: "Não",
+      acceptClassName: "p-button-danger",
+      accept: () => excluirConfirm(_id),
+    });
   };
 
   // operação inserir
@@ -49,17 +85,45 @@ function App() {
   };
 
   const salvar = () => {
-    console.log("Salvar ...");
     if (colaborador._id == null) {
       // inclussão
-      ColaboradorSrv.postColaboradores(colaborador).then(() =>
-        atualizarLista()
-      );
+      ColaboradorSrv.postColaboradores(colaborador).then((resp) => {
+        setEditando(false);
+        atualizarLista();
+        toastRef.current
+          .show({
+            severity: "success",
+            summary: "Salvou",
+            life: 2000,
+          })
+          .catch((e) => {
+            toastRef.current.show({
+              severity: "error",
+              summary: e.message,
+              life: 4000,
+            });
+          });
+      });
     } else {
       // alteração
-      ColaboradorSrv.putColaboradores(colaborador).then(() => atualizarLista());
+      ColaboradorSrv.putColaboradores(colaborador)
+        .then((resp) => {
+          setEditando(false);
+          atualizarLista();
+          toastRef.current.show({
+            severity: "success",
+            summary: "Salvou",
+            life: 2000,
+          });
+        })
+        .catch((e) => {
+          toastRef.current.show({
+            severity: "error",
+            summary: e.message,
+            life: 4000,
+          });
+        });
     }
-    setEditando(false);
   };
 
   const cancelar = () => {
@@ -71,6 +135,7 @@ function App() {
     return (
       <div className="App">
         <Toast ref={toastRef} />
+        <ConfirmDialog />
         <ColaboradorList
           colaboradores={colaboradores}
           inserir={inserir}
