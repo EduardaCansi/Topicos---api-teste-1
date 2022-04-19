@@ -1,4 +1,4 @@
 # Topicos---api-teste-1
 
-# Projeto BaseProdutos e Cadastro Produtos
+# Projeto ApiProdutos e AppProdutos
 Autores: Eduarda Cansi e Daniel Conte
