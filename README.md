@@ -1,4 +1,4 @@
 # Topicos---api-teste-1
 
-# Projeto ApiProdutos e AppProdutos
+# Projeto trabalho-01-api e trabalho-01-web
 Autores: Eduarda Cansi e Daniel Conte
