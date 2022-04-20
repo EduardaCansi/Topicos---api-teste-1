@@ -1,0 +1,49 @@
+# Obter a lista de usuários
+GET http://localhost:3000/api/produtos
+Content-Type: application/json
+###
+
+# Inserir novo produto
+POST http://localhost:3000/api/produtos
+Content-Type: application/json
+
+{
+ "nome": "Produto 3", "descricao": "descricao",
+ "estoque": "10", "precoUnitario": "10"
+}
+###
+
+# Alterar produto
+PUT http://localhost:3000/api/produtos/625f59d38847d315b2330448
+Content-Type: application/json
+
+{
+ "_id": "625f59d38847d315b2330448",
+ "nome": "produto alterado",
+ "descricao": "aaa",
+ "estoque": "11",
+ "precoUnitario": "5.0"
+}
+###
+
+
+# Excluir um produto
+DELETE http://localhost:3000/api/produtos/625f59d38847d315b2330448
+Content-Type: application/json
+###
+
+
+# Obter pelo id de produto
+GET http://localhost:3000/api/produtos/625f59c08847d315b2330443
+Content-Type: application/json
+###
+
+
+# Obter produto filtrando
+GET http://localhost:3000/api/produtos/filtro/teste
+Content-Type: application/json
+###
+
+
+
+
