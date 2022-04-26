@@ -34,7 +34,10 @@ class ProdutoSrv {
       newProduto.estoque = Number(newProduto.estoque);
       newProduto.precoUnitario = Number(newProduto.precoUnitario);
 
-      const response = await api.put(this.url, JSON.stringify(newProduto));
+      const response = await api.put(
+        `${this.url}/${newProduto._id}`,
+        JSON.stringify(newProduto)
+      );
 
       return response?.data;
     } catch (error) {
