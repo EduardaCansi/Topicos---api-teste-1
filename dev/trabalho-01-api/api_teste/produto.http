@@ -14,11 +14,11 @@ Content-Type: application/json
 ###
 
 # Alterar produto
-PUT http://localhost:3000/api/produtos/625f59d38847d315b2330448
+PUT http://localhost:3000/api/produtos/625f59cf8847d315b2330446
 Content-Type: application/json
 
 {
- "_id": "625f59d38847d315b2330448",
+ "_id": "625f59cf8847d315b2330446",
  "nome": "produto alterado",
  "descricao": "aaa",
  "estoque": "11",
