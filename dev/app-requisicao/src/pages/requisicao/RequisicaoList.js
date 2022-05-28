@@ -1,3 +1,4 @@
+import "../../App.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 
@@ -21,7 +22,7 @@ const RequisicaoList = (props) => {
 
   return (
     <div>
-      <h4>Manter Requisicao</h4>
+      <h4>Manter Requisições</h4>
 
       <button
         onClick={props.onClickAtualizar}
@@ -50,7 +51,7 @@ const RequisicaoList = (props) => {
           rowsPerPageOptions={[10, 20, 50]}
           selectionMode="single"
           selection={props.requisicao}
-          onSelectionChange={(e) => props.setRequisicao(e.value)}
+          onSelectionChange={(e) => props.setRequisicoes(e.value)}
         >
           <Column field="titulo" header="Titulo" sortable filter></Column>
           <Column

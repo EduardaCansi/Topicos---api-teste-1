@@ -146,7 +146,7 @@ function RequisicaoCon() {
       <div>
         <Toast ref={toastRef} />
         <RequisicaoForm
-          tipoRequisicao={requisicao}
+          requisicao={requisicao}
           setRequisicao={setRequisicao}
           salvar={salvar}
           cancelar={cancelar}

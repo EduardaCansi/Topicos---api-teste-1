@@ -50,7 +50,7 @@ const TipoRequisicaoList = (props) => {
           rowsPerPageOptions={[10, 20, 50]}
           selectionMode="single"
           selection={props.tipoRequisicao}
-          onSelectionChange={(e) => props.setTipoRequisicao(e.value)}
+          onSelectionChange={(e) => props.setTipoRequisicoes(e.value)}
         >
           <Column field="_id" header="Id" sortable></Column>
           <Column field="descricao" header="Descrição" sortable filter></Column>

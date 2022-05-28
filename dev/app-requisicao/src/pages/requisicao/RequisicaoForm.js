@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import TipoRequisicaoSrv from "../tipoRequisicao/TipoRequisicaoSrv";
+import SolicitanteSrv from "../solicitante/SolicitanteSrv";
 
 const RequisicaoForm = (props) => {
   const [tipoRequisicoes, setTipoRequisicoes] = useState([]);
+  const [solicitantes, setSolicitantes] = useState([]);
 
   useEffect(() => {
     atualizarLista();
@@ -18,6 +20,11 @@ const RequisicaoForm = (props) => {
     TipoRequisicaoSrv.getTipoRequisicoes().then((resp) => {
       setTipoRequisicoes(
         resp.map((tipo) => ({ label: tipo.descricao, value: tipo._id }))
+      );
+    });
+    SolicitanteSrv.getSolicitantes().then((resp) => {
+      setSolicitantes(
+        resp.map((tipo) => ({ label: tipo.nome, value: tipo._id }))
       );
     });
   };
@@ -76,23 +83,24 @@ const RequisicaoForm = (props) => {
       </div>
       <div class="form-group">
         <label>Tipo Requisicao</label>
-
+        <br></br>
         <Dropdown
           name="tipoRequisicao"
           value={props.requisicao.tipoRequisicao}
           options={tipoRequisicoes}
           onChange={handleInputChange}
-          placeholder="Select a City"
+          placeholder="Selecione o Tipo de Requisição"
         />
       </div>
       <div class="form-group">
-        <label>solicitante</label>
-        <input
-          class="form-control"
-          type="date"
+        <label>Solicitante</label>
+        <br></br>
+        <Dropdown
           name="solicitante"
           value={props.requisicao.solicitante}
+          options={solicitantes}
           onChange={handleInputChange}
+          placeholder="Selecione o Solicitante"
         />
       </div>
       <div class="form-group">
