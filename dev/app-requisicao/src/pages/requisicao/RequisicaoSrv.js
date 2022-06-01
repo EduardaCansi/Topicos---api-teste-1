@@ -1,7 +1,7 @@
 import api from "../../services/axios-common";
 
 class RequisicaoSrv {
-  url = "/requisicoes";
+  url = "/requisicao";
 
   async getRequisicoes() {
     try {
@@ -10,16 +10,16 @@ class RequisicaoSrv {
     } catch (error) {}
   }
 
-  async postRequisicoes(requisicao) {
+  async postRequisicoes(Requisicao) {
     try {
-      const response = await api.post(this.url, JSON.stringify(requisicao));
+      const response = await api.post(this.url, JSON.stringify(Requisicao));
       return response.data;
     } catch (error) {}
   }
 
-  async putRequisicoes(requisicao) {
+  async putRequisicoes(Requisicao) {
     try {
-      const response = await api.put(this.url, JSON.stringify(requisicao));
+      const response = await api.put(this.url, JSON.stringify(Requisicao));
       return response.data;
     } catch (error) {}
   }

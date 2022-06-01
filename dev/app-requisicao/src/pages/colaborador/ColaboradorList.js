@@ -1,21 +1,25 @@
+import React from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { Button } from "primereact/button";
 
 const ColaboradorList = (props) => {
   const operacoes = (row) => (
     <>
-      <button
+      <Button
+        type="button"
+        icon="pi pi-pencil"
+        className="p-button-rounded p-button-text "
+        label="Editar"
         onClick={() => props.editar(row._id)}
-        className="btn btn-primary btn-sm"
-      >
-        Editar
-      </button>
-      <button
+      ></Button>
+      <Button
+        type="button"
+        icon="pi pi-trash"
+        className="p-button-rounded p-button-text "
+        label="Cancelar"
         onClick={() => props.excluir(row._id)}
-        className="btn btn-danger btn-sm"
-      >
-        Excluir
-      </button>
+      ></Button>
     </>
   );
 
@@ -52,10 +56,8 @@ const ColaboradorList = (props) => {
           selection={props.colaborador}
           onSelectionChange={(e) => props.setColaboradores(e.value)}
         >
-          <Column field="_id" header="Id" sortable></Column>
           <Column field="nome" header="Nome" sortable filter></Column>
           <Column field="email" header="Email" sortable filter></Column>
-          <Column field="senha" header="Senha" sortable></Column>
           <Column header="Operações" body={operacoes}></Column>
         </DataTable>
       </div>

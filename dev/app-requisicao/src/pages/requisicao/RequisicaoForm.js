@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import { useForm } from "react-hook-form";
 import { Dropdown } from "primereact/dropdown";
 import TipoRequisicaoSrv from "../tipoRequisicao/TipoRequisicaoSrv";
 import SolicitanteSrv from "../solicitante/SolicitanteSrv";
@@ -6,6 +9,15 @@ import SolicitanteSrv from "../solicitante/SolicitanteSrv";
 const RequisicaoForm = (props) => {
   const [tipoRequisicoes, setTipoRequisicoes] = useState([]);
   const [solicitantes, setSolicitantes] = useState([]);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    props.salvar();
+  };
 
   useEffect(() => {
     atualizarLista();
@@ -30,94 +42,80 @@ const RequisicaoForm = (props) => {
   };
 
   return (
-    <form>
-      <div class="form-group">
-        <label>Titulo</label>
-        <input
-          class="form-control"
-          type="text"
-          name="titulo"
-          value={props.requisicao.titulo}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div class="form-group">
-        <label>Descrição</label>
-        <input
-          class="form-control"
-          type="text"
-          name="descricao"
-          value={props.requisicao.descricao}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div class="form-group">
-        <label>Data Hora Criada</label>
-        <input
-          class="form-control"
-          type="date"
-          name="dataHoraCriada"
-          value={props.requisicao.dataHoraCriada}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div class="form-group">
-        <label>Status</label>
-        <input
-          class="form-control"
-          type="text"
-          name="status"
-          value={props.requisicao.status}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div class="form-group">
-        <label>Prazo Atendimento</label>
-        <input
-          class="form-control"
-          type="date"
-          name="prazoAtendimento"
-          value={props.requisicao.prazoAtendimento}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div class="form-group">
-        <label>Tipo Requisicao</label>
-        <br></br>
-        <Dropdown
-          name="tipoRequisicao"
-          value={props.requisicao.tipoRequisicao}
-          options={tipoRequisicoes}
-          onChange={handleInputChange}
-          placeholder="Selecione o Tipo de Requisição"
-        />
-      </div>
-      <div class="form-group">
-        <label>Solicitante</label>
-        <br></br>
-        <Dropdown
-          name="solicitante"
-          value={props.requisicao.solicitante}
-          options={solicitantes}
-          onChange={handleInputChange}
-          placeholder="Selecione o Solicitante"
-        />
-      </div>
-      <div class="form-group">
-        <button
-          type="button"
-          onClick={props.salvar}
-          className="btn btn-primary btn-sm"
-        >
-          Salvar
-        </button>
-        <button
-          type="button"
-          onClick={props.cancelar}
-          className="btn btn-primary btn-sm"
-        >
-          Cancelar
-        </button>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div style={{ padding: 15 }}>
+        <div className="card">
+          <h5>Cadastro de Requisições</h5>
+
+          <div className="p-fluid grid formgrid">
+            <div className="field col-12 md:col-4">
+              <label htmlFor="titulo">Titulo</label>
+              <InputText
+                name="titulo"
+                {...register("titulo", {
+                  required: { value: true, message: "O titulo é obrigatório!" },
+                  maxLength: {
+                    value: 50,
+                    message: "O titulo pode ter no máximo 50 caracteres!",
+                  },
+                  minLength: {
+                    value: 2,
+                    message: "O titulo pode ter no mínimo 2 caracteres!",
+                  },
+                })}
+                defaultValue={props.requisicao.titulo}
+                onChange={handleInputChange}
+              />
+              {errors.titulo && (
+                <span style={{ color: "red" }}>{errors.titulo.message}</span>
+              )}
+            </div>
+          </div>
+
+          <div className="p-fluid grid formgrid">
+            <div className="field col-12 md:col-4">
+              <label htmlFor="descricao">Descrição</label>
+              <InputText
+                name="descricao"
+                {...register("descricao", {
+                  required: {
+                    value: true,
+                    message: "O descrição é obrigatório!",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "O descrição pode ter no máximo 50 caracteres!",
+                  },
+                  minLength: {
+                    value: 2,
+                    message: "O descrição pode ter no mínimo 2 caracteres!",
+                  },
+                })}
+                defaultValue={props.requisicao.descricao}
+                onChange={handleInputChange}
+              />
+              {errors.descricao && (
+                <span style={{ color: "red" }}>{errors.descricao.message}</span>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <Button
+              type="submit"
+              icon="pi pi-check"
+              className="p-button-rounded p-button-text "
+              label="Salvar"
+            ></Button>
+            <Button
+              type="button"
+              icon="pi pi-times"
+              className="p-button-rounded p-button-text"
+              label="Cancelar"
+              onClick={props.cancelar}
+            ></Button>
+          </div>
+        </div>
       </div>
     </form>
   );

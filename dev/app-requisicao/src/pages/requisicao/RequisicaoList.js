@@ -62,13 +62,13 @@ const RequisicaoList = (props) => {
           ></Column>
           <Column field="status" header="Status" sortable filter></Column>
           <Column
-            field="tipoRequisicao"
+            field="tipoRequisicao.descricao"
             header="Tipo Requisição"
             sortable
             filter
           ></Column>
           <Column
-            field="solicitante"
+            field="solicitante.nome"
             header="Solicitante"
             sortable
             filter
