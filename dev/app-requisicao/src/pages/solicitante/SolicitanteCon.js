@@ -26,7 +26,7 @@ function SolicitanteCon() {
         setSolicitantes(resp);
         toastRef.current.show({
           severity: "sucess",
-          summary: "Usuários atualizados",
+          summary: "Lista atualizada",
           life: 3000,
         });
       })

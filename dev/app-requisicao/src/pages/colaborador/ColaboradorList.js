@@ -9,7 +9,7 @@ const ColaboradorList = (props) => {
       <Button
         type="button"
         icon="pi pi-pencil"
-        className="p-button-rounded p-button-text "
+        className="p-button-rounded p-button-text"
         label="Editar"
         onClick={() => props.editar(row._id)}
       ></Button>
@@ -17,31 +17,32 @@ const ColaboradorList = (props) => {
         type="button"
         icon="pi pi-trash"
         className="p-button-rounded p-button-text "
-        label="Cancelar"
+        label="Excluir"
         onClick={() => props.excluir(row._id)}
       ></Button>
     </>
   );
 
   return (
-    <div>
-      <h4>Manter Colaborador</h4>
+    <div style={{ padding: 15 }}>
+      <h4 style={{ textAlign: "center" }}>Manter Colaborador</h4>
 
-      <button
-        onClick={props.onClickAtualizar}
-        type="button"
-        class="btn btn-primary btn-sm"
-      >
-        Atualizar Lista
-      </button>
-
-      <button
-        type="button"
-        class="btn btn-primary btn-sm"
-        onClick={props.inserir}
-      >
-        Inserir
-      </button>
+      <div style={{ textAlign: "end", padding: 5 }}>
+        <Button
+          type="button"
+          icon="pi pi-refresh"
+          className="p-button-raised p-button-rounded p-button-text"
+          label="Atualizar Lista"
+          onClick={props.onClickAtualizar}
+        ></Button>
+        <Button
+          type="button"
+          icon="pi pi-plus"
+          className="p-button-raised p-button-rounded p-button-text"
+          label="Inserir"
+          onClick={props.inserir}
+        ></Button>
+      </div>
 
       <div className="card">
         <DataTable

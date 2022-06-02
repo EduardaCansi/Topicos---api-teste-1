@@ -1,7 +1,9 @@
 import React from "react";
 import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
+import "../../App.css";
 
 const ColaboradorForm = (props) => {
   const handleInputChange = (event) => {
@@ -22,22 +24,22 @@ const ColaboradorForm = (props) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div style={{ padding: 15 }}>
         <div className="card">
-          <h5>Cadastro de Colaboradores</h5>
+          <h4 style={{ textAlign: "center" }}>Cadastro de Colaboradores</h4>
 
           <div className="p-fluid grid formgrid">
             <div className="field col-12 md:col-4">
-              <label htmlFor="nome">Nome</label>
+              <label htmlFor="nome">Nome*</label>
               <InputText
                 name="nome"
                 {...register("nome", {
-                  required: { value: true, message: "O nome é obrigatório!" },
+                  required: { value: true, message: "Campo obrigatório!" },
                   maxLength: {
-                    value: 50,
-                    message: "O nome pode ter no máximo 50 caracteres!",
+                    value: 100,
+                    message: "O campo deve ter no máximo 100 caracteres!",
                   },
                   minLength: {
                     value: 2,
-                    message: "O nome pode ter no mínimo 2 caracteres!",
+                    message: "O campo deve ter no mínimo 2 caracteres!",
                   },
                 })}
                 defaultValue={props.colaborador.nome}
@@ -50,19 +52,11 @@ const ColaboradorForm = (props) => {
           </div>
           <div className="p-fluid grid formgrid">
             <div className="field col-12 md:col-4">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email*</label>
               <InputText
                 name="email"
                 {...register("email", {
-                  required: { value: true, message: "O email é obrigatório!" },
-                  maxLength: {
-                    value: 100,
-                    message: "O email pode ter no máximo 100 caracteres!",
-                  },
-                  minLength: {
-                    value: 10,
-                    message: "O nome deve ter no mínimo 10 caracteres!",
-                  },
+                  required: { value: true, message: "Campo obrigatório!" },
                 })}
                 defaultValue={props.colaborador.email}
                 onChange={handleInputChange}
@@ -74,29 +68,28 @@ const ColaboradorForm = (props) => {
           </div>
           <div className="p-fluid grid formgrid">
             <div className="field col-12 md:col-4">
-              <label htmlFor="senha">Senha</label>
-              <InputText
+              <label htmlFor="senha">Senha*</label>
+              <Password
+                toggleMask
                 name="senha"
-                {...register("senha", {})}
+                required="true"
                 defaultValue={props.colaborador.senha}
                 onChange={handleInputChange}
               />
-              {errors.senha && (
-                <span style={{ color: "red" }}>{errors.senha.message}</span>
-              )}
             </div>
           </div>
-          <div>
+
+          <div style={{ textAlign: "center", padding: 8 }}>
             <Button
               type="submit"
               icon="pi pi-check"
-              className="p-button-rounded p-button-text "
+              className="p-button-raised p-button-rounded p-button-text"
               label="Salvar"
             ></Button>
             <Button
               type="button"
               icon="pi pi-times"
-              className="p-button-rounded p-button-text"
+              className="p-button-raised p-button-rounded p-button-text"
               label="Cancelar"
               onClick={props.cancelar}
             ></Button>
