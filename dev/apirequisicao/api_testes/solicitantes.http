@@ -1,6 +1,10 @@
+@apiUrl = http://localhost:3000/api
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjdiMDI2NjQ5OTEyNDQ3NTNhNmUxOGUiLCJub21lIjoiQWJlbGhhIGFsdGVyYWRvIiwiaWF0IjoxNjU0NjUxNDI4LCJleHAiOjE2NTQ2NTUwMjh9.87iiI2ZCUU01A4RDb5M2MCw8YLQ53so5CdWr0AikTwQ
+
 # Obter a lista de solicitantes
 GET http://localhost:3000/api/solicitantes
 Content-Type: application/json
+x-auth-token: {{authToken}}
 ###
 
 # Inserir novo solicitante
@@ -18,10 +22,10 @@ PUT http://localhost:3000/api/solicitantes
 Content-Type: application/json
 
 {
- "_id": "623a6af66779e0de8514e4a3",
- "nome": "Solicitante alterado",
- "email": "solicitante@teste.com",
- "celular": "54 6543 2433"
+ "_id": "628d674c7c27b90665eafa4c",
+ "nome": "Joao alterado",
+ "email": "joao_solicitante@gmail.com",
+ "senha": "abcd"
 }
 ###
 
@@ -41,4 +45,15 @@ Content-Type: application/json
 # Obter solicitante filtrando
 GET http://localhost:3000/api/solicitantes/filtro/alterado
 Content-Type: application/json
+###
+
+# Autenticação de colaborador
+POST {{apiUrl}}/solicitantes/login
+Content-Type: application/json
+x-auth-token: {{authToken}}
+
+{
+    "email": "abelha@abelha.com",
+    "senha": "123"
+}
 ###

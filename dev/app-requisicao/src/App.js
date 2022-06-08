@@ -15,6 +15,8 @@ const TipoRequisicaoCon = lazy(() =>
 );
 const RequisicaoCon = lazy(() => import("./pages/requisicao/RequisicaoCon"));
 
+sessionStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjdiMDI2NjQ5OTEyNDQ3NTNhNmUxOGUiLCJub21lIjoiQWJlbGhhIGFsdGVyYWRvIiwiaWF0IjoxNjU0NjUxNDI4LCJleHAiOjE2NTQ2NTUwMjh9.87iiI2ZCUU01A4RDb5M2MCw8YLQ53so5CdWr0AikTwQ')
+
 function App() {
   return (
     <BrowserRouter>

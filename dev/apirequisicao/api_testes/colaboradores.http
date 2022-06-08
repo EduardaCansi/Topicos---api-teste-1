@@ -1,11 +1,16 @@
+@apiUrl = http://localhost:3000/api
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjdiMDI2NjQ5OTEyNDQ3NTNhNmUxOGUiLCJub21lIjoiQWJlbGhhIGFsdGVyYWRvIiwiaWF0IjoxNjU0NjUxNDI4LCJleHAiOjE2NTQ2NTUwMjh9.87iiI2ZCUU01A4RDb5M2MCw8YLQ53so5CdWr0AikTwQ
+
 # Obter a lista de usuários
 GET http://localhost:3000/api/colaboradores
 Content-Type: application/json
+x-auth-token: {{authToken}}
 ###
 
 # Inserir novo colaborador
 POST http://localhost:3000/api/colaboradores
 Content-Type: application/json
+x-auth-token: {{authToken}}
 
 {
  "nome": "Usuario teste", "email": "teste@upf.br",
@@ -17,12 +22,13 @@ Content-Type: application/json
 # Alterar colaborador
 PUT http://localhost:3000/api/colaboradores
 Content-Type: application/json
+x-auth-token: {{authToken}}
 
 {
- "_id": "623a57b87e688588c0316e46",
- "nome": "Eduarda alterado",
- "email": "eduarda@teste.com",
- "celular": "54 6543 2433"
+ "_id": "625d98435b8dc02c05719aab",
+ "nome": "Eduarda",
+ "email": "182738@upf.br",
+ "senha": "1234"
 }
 ###
 
@@ -30,23 +36,27 @@ Content-Type: application/json
 # Excluir um colaborador
 DELETE http://localhost:3000/api/colaboradores/623a57de7e688588c0316e49
 Content-Type: application/json
+x-auth-token: {{authToken}}
 ###
 
 
 # Obter pelo id de colaborador
-GET http://localhost:3000/api/colaboradores/623a57b87e688588c0316e46
+GET http://localhost:3000/api/colaboradores/625d98435b8dc02c05719aab
 Content-Type: application/json
+x-auth-token: {{authToken}}
 ###
 
 
 # Obter colaborador filtrando
 GET http://localhost:3000/api/colaboradores/filtro/alterado
 Content-Type: application/json
+x-auth-token: {{authToken}}
 ###
 
 # Colaborador sem nome requerido.
 POST http://localhost:3000/api/colaboradores
 Content-Type: application/json
+x-auth-token: {{authToken}}
 
 {
  "nome": "",
@@ -60,6 +70,7 @@ Content-Type: application/json
 # Colaborador com email duplicado.
 POST http://localhost:3000/api/colaboradores
 Content-Type: application/json
+x-auth-token: {{authToken}}
 
 {
  "nome": "Jaqson",
@@ -67,5 +78,16 @@ Content-Type: application/json
  "celular": "99999-9999",
  "senha": "123",
  "dataHoraCad": "2021-01-25T17:32:25.000Z"
+}
+###
+
+# Autenticação de colaborador
+POST {{apiUrl}}/login
+Content-Type: application/json
+x-auth-token: {{authToken}}
+
+{
+    "email": "abelha@abelha.com",
+    "senha": "123"
 }
 ###
