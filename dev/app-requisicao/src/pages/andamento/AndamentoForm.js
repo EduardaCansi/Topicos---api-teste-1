@@ -5,11 +5,11 @@ import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import { Dropdown } from "primereact/dropdown";
 import { locale } from "primereact/api";
-import AtividadeSrv from "../atividade/AtividadeSrv";
+import RequisicaoSrv from "../requisicao/RequisicaoSrv";
 import ColaboradorSrv from "../colaborador/ColaboradorSrv";
 
 const AndamentoForm = (props) => {
-    const [atividades, setAtividades] = useState([]);
+    const [requisicoes, setRequisicoes] = useState([]);
     const [colaboradores, setColaboradores] = useState([]);
 
     //locale("br");
@@ -33,8 +33,8 @@ const AndamentoForm = (props) => {
     };
 
     const atualizarLista = () => {
-        AtividadeSrv.getAtividades().then((resp) => {
-            setAtividades(
+        RequisicaoSrv.getRequisicoes().then((resp) => {
+            setRequisicoes(
                 resp.map((tipo) => ({ label: tipo.titulo, value: tipo._id }))
             );
         });
@@ -123,13 +123,13 @@ const AndamentoForm = (props) => {
 
                     <div className="p-fluid grid formgrid">
                         <div class="field col-12 md:col-4">
-                            <label htmlFor="atividade">Atividade*</label>
+                            <label htmlFor="requisicao">Requisicao*</label>
                             <Dropdown
-                                name="atividade"
-                                value={props.andamento.atividade}
-                                options={atividades}
+                                name="requisicao"
+                                value={props.andamento.requisicao}
+                                options={requisicoes}
                                 onChange={handleInputChange}
-                                placeholder="Selecione a Atividade"
+                                placeholder="Selecione a Requisição"
                             />
                         </div>
                     </div>

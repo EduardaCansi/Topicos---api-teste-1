@@ -65,7 +65,7 @@ const AndamentoList = (props) => {
                         header="Data Hora"
                         sortable
                         filter
-                        dateFormat="dd/mm/yy"
+                        dateFormat="dd/mm/yy hh:mm"
                     ></Column>
                     <Column
                         field="atividade.titulo"

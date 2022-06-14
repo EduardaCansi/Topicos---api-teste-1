@@ -40,7 +40,7 @@ function AndamentoCon() {
     };
 
     const editar = (_id) => {
-        setAndamentos(andamentos.filter((andamento) => andamento._id == _id)[0]);
+        setAndamento(andamentos.filter((andamento) => andamento._id == _id)[0]);
         setEditando(true);
     };
 
