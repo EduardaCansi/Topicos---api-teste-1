@@ -1,5 +1,5 @@
 @apiUrl = http://localhost:3000/api
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjdiMDI2NjQ5OTEyNDQ3NTNhNmUxOGUiLCJub21lIjoiQWJlbGhhIGFsdGVyYWRvIiwiaWF0IjoxNjU0NjUxNDI4LCJleHAiOjE2NTQ2NTUwMjh9.87iiI2ZCUU01A4RDb5M2MCw8YLQ53so5CdWr0AikTwQ
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjdiMDI2NjQ5OTEyNDQ3NTNhNmUxOGUiLCJub21lIjoiQWJlbGhhIGFsdGVyYWRvIiwiaWF0IjoxNjU1MTY1MjM5LCJleHAiOjE2NTc3NTcyMzl9.57Fv5thc4zgBavVun2iX5W2NdziqSqOE1Nf2wUKlBds
 
 # Obter a lista de usuários
 GET http://localhost:3000/api/colaboradores

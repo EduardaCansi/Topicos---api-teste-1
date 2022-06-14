@@ -44,6 +44,20 @@ function Menu() {
             navigate("/requisicoes");
           },
         },
+        {
+          label: "Atividades",
+          icon: "pi pi-fw pi-user",
+          command: () => {
+            navigate("/atividades");
+          },
+        },
+        {
+          label: "Andamento",
+          icon: "pi pi-fw pi-user",
+          command: () => {
+            navigate("/andamentos");
+          },
+        },
       ],
     },
     {
