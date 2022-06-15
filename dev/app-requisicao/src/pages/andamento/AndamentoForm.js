@@ -5,11 +5,11 @@ import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import { Dropdown } from "primereact/dropdown";
 import { locale } from "primereact/api";
-import RequisicaoSrv from "../requisicao/RequisicaoSrv";
+import AtividadeSrv from "../atividade/AtividadeSrv";
 import ColaboradorSrv from "../colaborador/ColaboradorSrv";
 
 const AndamentoForm = (props) => {
-    const [requisicoes, setRequisicoes] = useState([]);
+    const [atividades, setAtividades] = useState([]);
     const [colaboradores, setColaboradores] = useState([]);
 
     //locale("br");
@@ -33,8 +33,8 @@ const AndamentoForm = (props) => {
     };
 
     const atualizarLista = () => {
-        RequisicaoSrv.getRequisicoes().then((resp) => {
-            setRequisicoes(
+        AtividadeSrv.getAtividades().then((resp) => {
+            setAtividades(
                 resp.map((tipo) => ({ label: tipo.titulo, value: tipo._id }))
             );
         });
@@ -109,7 +109,7 @@ const AndamentoForm = (props) => {
                             <label htmlFor="dataHoraTermino">Data Hora*</label>
                             <Calendar
                                 name="dataHoraTermino"
-                                defaultValue={props.andamento.dataHoraTermino}
+                                value={props.andamento.dataHoraTermino}
                                 onChange={handleInputChange}
                                 showTime
                                 showSeconds
@@ -123,11 +123,11 @@ const AndamentoForm = (props) => {
 
                     <div className="p-fluid grid formgrid">
                         <div class="field col-12 md:col-4">
-                            <label htmlFor="requisicao">Requisicao*</label>
+                            <label htmlFor="atividade">Atividades*</label>
                             <Dropdown
-                                name="requisicao"
-                                value={props.andamento.requisicao}
-                                options={requisicoes}
+                                name="atividade"
+                                value={props.andamento.atividade}
+                                options={atividades}
                                 onChange={handleInputChange}
                                 placeholder="Selecione a Requisição"
                             />

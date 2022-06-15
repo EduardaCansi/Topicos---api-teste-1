@@ -40,7 +40,13 @@ function AndamentoCon() {
     };
 
     const editar = (_id) => {
-        setAndamento(andamentos.filter((andamento) => andamento._id == _id)[0]);
+        const andamento = andamentos.find((andamento) => andamento._id == _id)
+        setAndamento({
+            ...andamento,
+            atividade: andamento.atividade._id,
+            colaborador: andamento.colaborador._id,
+            dataHoraTermino: new Date(andamento.dataHoraTermino)
+        });
         setEditando(true);
     };
 

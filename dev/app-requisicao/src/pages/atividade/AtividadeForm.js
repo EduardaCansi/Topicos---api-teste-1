@@ -137,7 +137,7 @@ const AtividadeForm = (props) => {
                             <label htmlFor="prazo">Prazo Atendimento*</label>
                             <Calendar
                                 name="prazo"
-                                defaultValue={props.atividade.prazo}
+                                value={props.atividade.prazo}
                                 onChange={handleInputChange}
                                 showTime
                                 showSeconds
@@ -154,7 +154,7 @@ const AtividadeForm = (props) => {
                             <label htmlFor="agendaInicio">Agenda Inicio*</label>
                             <Calendar
                                 name="agendaInicio"
-                                defaultValue={props.atividade.agendaInicio}
+                                value={props.atividade.agendaInicio}
                                 onChange={handleInputChange}
                                 showTime
                                 showSeconds
@@ -171,7 +171,7 @@ const AtividadeForm = (props) => {
                             <label htmlFor="dataHoraTermino">Data e Hora do Termino*</label>
                             <Calendar
                                 name="dataHoraTermino"
-                                defaultValue={props.atividade.dataHoraTermino}
+                                value={props.atividade.dataHoraTermino}
                                 onChange={handleInputChange}
                                 showTime
                                 showSeconds

@@ -5,6 +5,13 @@ import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 
 const AtividadeList = (props) => {
+
+    const parseDate = (row) => {
+        const prazo = new Date(row.prazo);
+
+        return prazo.toLocaleString();
+    };
+
     const operacoes = (row) => (
         <>
             <Button
@@ -66,21 +73,21 @@ const AtividadeList = (props) => {
                         header="Prazo"
                         sortable
                         filter
-                        dateFormat="dd/mm/yy"
+                        body={parseDate}
                     ></Column>
                     <Column
                         field="agendaInicio"
                         header="Agenda Inicio"
                         sortable
                         filter
-                        dateFormat="dd/mm/yy"
+                        body={parseDate}
                     ></Column>
                     <Column
                         field="dataHoraTermino"
                         header="Data e Hora do Término"
                         sortable
                         filter
-                        dateFormat="dd/mm/yy"
+                        body={parseDate}
                     ></Column>
                     <Column
                         field="requisicao.titulo"

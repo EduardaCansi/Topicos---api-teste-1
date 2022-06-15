@@ -8,6 +8,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { Toast } from "primereact/toast";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import AndamentoSrv from "../andamento/AndamentoSrv";
 
 function RequisicaoCon() {
   const initialState = { id: null, descricao: "" };
@@ -40,7 +41,14 @@ function RequisicaoCon() {
   };
 
   const editar = (_id) => {
-    setRequisicao(requisicoes.filter((requisicao) => requisicao._id == _id)[0]);
+    const requisicao = requisicoes.find((requisicao) => requisicao._id == _id)
+    setRequisicao({
+      ...requisicao,
+      dataHoraCriada: new Date(requisicao.dataHoraCriada),
+      prazoAtendimento: new Date(requisicao.prazoAtendimento),
+      tipoRequisicao: requisicao.tipoRequisicao._id,
+      solicitante: requisicao.solicitante._id
+    });
     setEditando(true);
   };
 

@@ -40,7 +40,15 @@ function AtividadeCon() {
     };
 
     const editar = (_id) => {
-        setAtividade(atividades.filter((atividade) => atividade._id == _id)[0]);
+        const atividade = atividades.find((atividade) => atividade._id == _id)
+        setAtividade({
+            ...atividade,
+            prazo: new Date(atividade.prazo),
+            agendaInicio: new Date(atividade.agendaInicio),
+            dataHoraTermino: new Date(atividade.dataHoraTermino),
+            requisicao: atividade.requisicao._id,
+            colaborador: atividade.colaborador._id
+        });
         setEditando(true);
     };
 

@@ -109,7 +109,7 @@ const RequisicaoForm = (props) => {
               <label htmlFor="dataHoraCriada">Data Hora Criada*</label>
               <Calendar
                 name="dataHoraCriada"
-                defaultValue={props.requisicao.dataHoraCriada}
+                value={props.requisicao.dataHoraCriada}
                 onChange={handleInputChange}
                 showTime
                 showSeconds
@@ -126,7 +126,7 @@ const RequisicaoForm = (props) => {
               <label htmlFor="prazoAtendimento">Prazo Atendimento*</label>
               <Calendar
                 name="prazoAtendimento"
-                defaultValue={props.requisicao.prazoAtendimento}
+                value={props.requisicao.prazoAtendimento}
                 onChange={handleInputChange}
                 showTime
                 showSeconds

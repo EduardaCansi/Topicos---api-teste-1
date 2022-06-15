@@ -5,6 +5,13 @@ import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 
 const RequisicaoList = (props) => {
+
+  const parseDate = (row) => {
+    const data = new Date(row.dataHoraCriada);
+
+    return data.toLocaleString();
+  };
+
   const operacoes = (row) => (
     <>
       <Button
@@ -64,7 +71,7 @@ const RequisicaoList = (props) => {
             header="Data Hora Criada"
             sortable
             filter
-            dateFormat="dd/mm/yy"
+            body={parseDate}
           ></Column>
           <Column field="status" header="Status" sortable filter></Column>
           <Column

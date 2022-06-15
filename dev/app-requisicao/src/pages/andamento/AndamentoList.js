@@ -5,6 +5,13 @@ import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 
 const AndamentoList = (props) => {
+
+    const parseDate = (row) => {
+        const data = new Date(row.dataHoraTermino);
+
+        return data.toLocaleString();
+    };
+
     const operacoes = (row) => (
         <>
             <Button
@@ -65,7 +72,7 @@ const AndamentoList = (props) => {
                         header="Data Hora"
                         sortable
                         filter
-                        dateFormat="dd/mm/yy hh:mm"
+                        body={parseDate}
                     ></Column>
                     <Column
                         field="atividade.titulo"

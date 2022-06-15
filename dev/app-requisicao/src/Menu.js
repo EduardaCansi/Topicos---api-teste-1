@@ -63,6 +63,11 @@ function Menu() {
     {
       label: "Sair",
       icon: "pi pi-fw pi-power-off",
+      command: () => {
+        sessionStorage.setItem('token',
+          '');
+      },
+      url: '/'
     },
   ];
 
