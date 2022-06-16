@@ -4,15 +4,12 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import { Dropdown } from "primereact/dropdown";
-import { locale } from "primereact/api";
 import RequisicaoSrv from "../requisicao/RequisicaoSrv";
 import ColaboradorSrv from "../colaborador/ColaboradorSrv";
 
 const AtividadeForm = (props) => {
     const [requisicoes, setRequisicoes] = useState([]);
     const [colaboradores, setColaboradores] = useState([]);
-
-    //locale("br");
 
     const {
         register,

@@ -4,15 +4,12 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import { Dropdown } from "primereact/dropdown";
-import { locale } from "primereact/api";
 import AtividadeSrv from "../atividade/AtividadeSrv";
 import ColaboradorSrv from "../colaborador/ColaboradorSrv";
 
 const AndamentoForm = (props) => {
     const [atividades, setAtividades] = useState([]);
     const [colaboradores, setColaboradores] = useState([]);
-
-    //locale("br");
 
     const {
         register,

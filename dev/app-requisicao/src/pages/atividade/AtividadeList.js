@@ -6,10 +6,18 @@ import { Button } from "primereact/button";
 
 const AtividadeList = (props) => {
 
-    const parseDate = (row) => {
+    const dataPrazo = (row) => {
         const prazo = new Date(row.prazo);
-
         return prazo.toLocaleString();
+
+    };
+    const dataAgendaInicio = (row) => {
+        const agendaInicio = new Date(row.agendaInicio);
+        return agendaInicio.toLocaleString();
+    };
+    const dataHoraTermino = (row) => {
+        const dataHoraTermino = new Date(row.dataHoraTermino);
+        return dataHoraTermino.toLocaleString();
     };
 
     const operacoes = (row) => (
@@ -73,21 +81,21 @@ const AtividadeList = (props) => {
                         header="Prazo"
                         sortable
                         filter
-                        body={parseDate}
+                        body={dataPrazo}
                     ></Column>
                     <Column
                         field="agendaInicio"
                         header="Agenda Inicio"
                         sortable
                         filter
-                        body={parseDate}
+                        body={dataAgendaInicio}
                     ></Column>
                     <Column
                         field="dataHoraTermino"
                         header="Data e Hora do Término"
                         sortable
                         filter
-                        body={parseDate}
+                        body={dataHoraTermino}
                     ></Column>
                     <Column
                         field="requisicao.titulo"

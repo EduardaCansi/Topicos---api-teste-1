@@ -4,15 +4,12 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import { Dropdown } from "primereact/dropdown";
-import { locale } from "primereact/api";
 import TipoRequisicaoSrv from "../tipoRequisicao/TipoRequisicaoSrv";
 import SolicitanteSrv from "../solicitante/SolicitanteSrv";
 
 const RequisicaoForm = (props) => {
   const [tipoRequisicoes, setTipoRequisicoes] = useState([]);
   const [solicitantes, setSolicitantes] = useState([]);
-
-  //locale("br");
 
   const {
     register,
